@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fawaz T. Alanzi - Current Time</title>
+    <style>
+        #header {
+            position: fixed;
+            top: 0;
+            width: 200%;
+            height: 300px; /* Adjust the height as needed */
+            color: white;
+            text-align: left;
+            padding: 10px 20px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+        #time {
+            font-size: 2.0em;
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            background-color: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent background to the time */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Ensure the image stays behind the text */
+        }
+        #name {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            font-size: 3.2em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img src="E9364565-B985-43A6-BF72-D88BF4EA0CBE.jpeg" alt="Header Image">
+        <div id="name">Fawaz T. Alanzi</div>
+        <div id="header-content">
+            Current Time: <span id="time"></span>
+        </div>
+    </div>
+    <script>
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Add leading zeros to single digit numbers
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            var timeString = hours + ':' + minutes + ':' + seconds;
+
+            document.getElementById('time').textContent = timeString;
+        }
+
+        // Update the time immediately and then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
